@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oslo in Two Days — A Walking & Ferry Itinerary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy:#1B2A3A;
+    --navy-deep:#101b27;
+    --birch:#F2EEE3;
+    --birch-warm:#ECE5D4;
+    --moss:#4A5D45;
+    --rust:#B8512F;
+    --rust-soft:#d97a52;
+    --slate:#5C6670;
+    --slate-light:#8b939a;
+    --white:#FFFDF9;
+    --line:rgba(27,42,58,0.14);
+    --green-free:#2d6a4f;
+    --green-free-bg:rgba(45,106,79,0.09);
+
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--birch);
+    color:var(--navy);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  a{color:var(--rust); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-offset:3px;}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--navy);
+    color:var(--birch);
+    overflow:hidden;
+    padding:84px 0 64px;
+  }
+  .hero-fjord{
+    position:absolute; inset:0; opacity:0.5;
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; z-index:2;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rust-soft);
+    margin:0 0 18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px; height:1px;
+    background:var(--rust-soft);
+    display:inline-block;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    line-height:1.02;
+    margin:0 0 22px;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--rust-soft);
+  }
+  .hero p.lede{
+    font-size:1.15rem;
+    max-width:560px;
+    color:rgba(242,238,227,0.82);
+    margin:0 0 36px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:28px;
+    border-top:1px solid rgba(242,238,227,0.18);
+    padding-top:26px;
+  }
+  .hero-meta div{font-size:0.92rem;}
+  .hero-meta .label{
+    display:block;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--slate-light);
+    margin-bottom:4px;
+  }
+  .hero-meta .val{color:var(--birch); font-weight:500;}
+
+  /* ---------- NAV ---------- */
+  .daynav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,238,227,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .daynav-inner{
+    max-width:920px; margin:0 auto; padding:0 28px;
+    display:flex; gap:4px; overflow-x:auto;
+  }
+  .daynav a{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--navy);
+    text-decoration:none;
+    padding:15px 14px;
+    white-space:nowrap;
+    border-bottom:2px solid transparent;
+    opacity:0.65;
+  }
+  .daynav a:hover{opacity:1; border-bottom-color:var(--rust);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:64px 0;}
+  .section-head{margin-bottom:40px;}
+  .section-head .eyebrow{color:var(--rust);}
+  .section-head .eyebrow::before{background:var(--rust);}
+  .section-head h2{
+    font-family:var(--serif);
+    font-size:clamp(1.9rem, 4vw, 2.6rem);
+    font-weight:500;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  .section-head p{
+    color:var(--slate);
+    max-width:560px;
+    font-size:1.02rem;
+    margin:0;
+  }
+
+  .site-nav{
+    background:var(--navy-deep);
+    color:var(--birch);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 28px; height:44px;
+  }
+  .site-nav a{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--birch);
+    opacity:0.75;
+  }
+  .site-nav a:hover{opacity:1; text-decoration:underline;}
+  .site-nav a.back{color:var(--rust-soft); opacity:1;}
+  .site-nav .other-guides{display:flex; gap:20px;}
+
+  hr.divider{
+    border:none;
+    height:10px;
+    margin:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='10' viewBox='0 0 200 10'%3E%3Cpath d='M0 5 Q 10 0, 20 5 T 40 5 T 60 5 T 80 5 T 100 5 T 120 5 T 140 5 T 160 5 T 180 5 T 200 5' fill='none' stroke='%23B8512F' stroke-width='1' opacity='0.35'/%3E%3C/svg%3E");
+    background-repeat:repeat-x;
+  }
+
+  /* ---------- DAY HEADER BANNER ---------- */
+  .day-banner{
+    background:var(--navy);
+    color:var(--birch);
+    padding:46px 0 40px;
+  }
+  .day-banner .daytag{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--rust-soft);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    margin:0 0 10px;
+  }
+  .day-banner h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(1.9rem, 4.4vw, 2.9rem);
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .day-banner p{
+    color:rgba(242,238,227,0.78);
+    max-width:600px;
+    margin:0 0 22px;
+    font-size:1.02rem;
+  }
+  .day-stats{display:flex; flex-wrap:wrap; gap:24px;}
+  .day-stats span{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--slate-light);
+    letter-spacing:0.03em;
+  }
+  .day-stats span b{color:var(--birch); font-weight:500;}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{
+    position:relative;
+    padding:48px 0 8px;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:84px; top:0; bottom:0;
+    width:1px;
+    background:var(--line);
+  }
+  @media (max-width:600px){
+    .timeline::before{left:18px;}
+  }
+
+  .stop{
+    position:relative;
+    display:grid;
+    grid-template-columns:84px 1fr;
+    gap:28px;
+    margin-bottom:8px;
+  }
+  @media (max-width:600px){
+    .stop{grid-template-columns:18px 1fr; gap:16px;}
+  }
+
+  .stop-time{
+    text-align:right;
+    padding-top:2px;
+  }
+  .stop-time .t{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--slate);
+    font-weight:500;
+  }
+  @media (max-width:600px){ .stop-time{display:none;} }
+
+  .stop-dot{
+    position:absolute;
+    left:80px; top:6px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--rust);
+    border:2px solid var(--birch);
+    box-shadow:0 0 0 1px var(--rust);
+  }
+  @media (max-width:600px){ .stop-dot{left:14px;} }
+
+  .stop-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:22px 24px 24px;
+    margin-bottom:32px;
+  }
+  .stop-card.travel{
+    background:transparent;
+    border:none;
+    border-left:2px dashed var(--line);
+    padding:6px 0 6px 22px;
+    margin-bottom:20px;
+    margin-left:2px;
+  }
+  .stop-card.travel .travel-text{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--slate);
+    display:flex; align-items:center; gap:8px;
+  }
+  .stop-card.travel .travel-text .icon{color:var(--rust); font-size:14px;}
+
+  .stop-mobile-time{
+    display:none;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--rust);
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  @media (max-width:600px){ .stop-mobile-time{display:block;} }
+
+  .stop-card h3{
+    font-family:var(--serif);
+    font-size:1.4rem;
+    font-weight:500;
+    margin:0 0 6px;
+    letter-spacing:-0.005em;
+  }
+  .stop-tag{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--moss);
+    background:rgba(74,93,69,0.1);
+    border-radius:2px;
+    padding:3px 8px;
+    margin-bottom:10px;
+    margin-right:6px;
+  }
+  .stop-tag.hike{color:var(--moss); background:rgba(74,93,69,0.1);}
+  .stop-tag.culture{color:var(--navy); background:rgba(27,42,58,0.08);}
+  .stop-tag.food{color:var(--rust); background:rgba(184,81,47,0.1);}
+  .stop-tag.ferry{color:#2b6e8f; background:rgba(43,110,143,0.1);}
+
+  /* ---------- INFO BADGE (hours + fees) ---------- */
+  .info-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:14px;
+    align-items:flex-start;
+  }
+  .info-badge{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    border-radius:2px;
+    padding:4px 10px;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    line-height:1.4;
+  }
+  .info-badge.hours{
+    background:rgba(27,42,58,0.06);
+    color:var(--navy);
+    border:1px solid rgba(27,42,58,0.14);
+  }
+  .info-badge.fee-free{
+    background:var(--green-free-bg);
+    color:var(--green-free);
+    border:1px solid rgba(45,106,79,0.2);
+    font-weight:600;
+  }
+  .info-badge.fee-paid{
+    background:rgba(184,81,47,0.07);
+    color:var(--rust);
+    border:1px solid rgba(184,81,47,0.2);
+  }
+  .info-badge.oslo-pass{
+    background:rgba(43,110,143,0.07);
+    color:#2b6e8f;
+    border:1px solid rgba(43,110,143,0.18);
+  }
+
+  .stop-card p{
+    margin:0 0 14px;
+    color:var(--navy);
+    font-size:0.98rem;
+  }
+  .stop-card p.muted{color:var(--slate);}
+
+  .highlight{
+    font-size:0.92rem;
+    color:var(--slate);
+    border-top:1px solid var(--line);
+    padding-top:12px;
+    margin-top:14px;
+  }
+  .highlight b{
+    color:var(--navy);
+    font-weight:600;
+  }
+
+  .tip{
+    margin-top:14px;
+    background:var(--birch-warm);
+    border-left:3px solid var(--rust);
+    border-radius:0 3px 3px 0;
+    padding:11px 14px;
+    font-size:0.9rem;
+    color:var(--navy);
+  }
+  .tip b{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--rust);
+    display:block;
+    margin-bottom:4px;
+  }
+
+  /* ---------- TRADEOFF / CHOICE BOX ---------- */
+  .choice-box{
+    background:var(--white);
+    border:1px dashed var(--slate-light);
+    border-radius:3px;
+    padding:20px 22px;
+    margin:18px 0 0;
+    font-size:0.92rem;
+  }
+  .choice-box .label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:8px;
+    display:block;
+  }
+
+  /* ---------- POI REFERENCE GRID ---------- */
+  .poi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .poi-card{
+    background:var(--white);
+    padding:24px;
+  }
+  .poi-card h4{
+    font-family:var(--serif);
+    font-size:1.1rem;
+    font-weight:500;
+    margin:0 0 8px;
+  }
+  .poi-card p{font-size:0.9rem; color:var(--slate); margin:0 0 10px;}
+  .poi-card .poi-info{
+    font-size:0.83rem;
+    color:var(--navy);
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .poi-card .poi-info span{display:flex; gap:6px; align-items:baseline;}
+  .poi-card .poi-info .lbl{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--slate-light);
+    white-space:nowrap;
+    min-width:44px;
+  }
+  .poi-card .poi-info .val-free{color:var(--green-free); font-weight:600;}
+  .poi-card .poi-info .val-paid{color:var(--rust);}
+
+  /* ---------- LOGISTICS ---------- */
+  .logi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:32px;
+  }
+  .logi-item .label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:8px;
+    display:block;
+  }
+  .logi-item h4{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:500;
+    margin:0 0 8px;
+  }
+  .logi-item p{font-size:0.92rem; color:var(--slate); margin:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy);
+    color:rgba(242,238,227,0.6);
+    padding:40px 0;
+    font-size:0.85rem;
+  }
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  footer .credit{font-family:var(--mono); font-size:11px; letter-spacing:0.04em;}
+
+  .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .pill{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--navy);
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:6px 14px;
+  }
+
+  /* ---------- OSLO PASS BANNER ---------- */
+  .pass-banner{
+    background:rgba(43,110,143,0.08);
+    border:1px solid rgba(43,110,143,0.22);
+    border-radius:3px;
+    padding:16px 20px;
+    margin-bottom:40px;
+    font-size:0.92rem;
+    color:var(--navy);
+  }
+  .pass-banner b{color:#2b6e8f;}
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="back" href="index.html">&larr; Travel With Me</a>
+  <div class="other-guides">
+    <a href="bergen.html">Bergen</a>
+    <a href="reykjavik.html">Reykjavik</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="hero-fjord" viewBox="0 0 920 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-20 280 C 100 250, 180 310, 280 270 S 460 200, 560 250 S 740 320, 940 260" stroke="#4A5D45" stroke-width="1.4" fill="none" opacity="0.5"/>
+    <path d="M-20 310 C 120 290, 220 340, 340 300 S 520 250, 620 290 S 780 340, 940 300" stroke="#5C6670" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M-20 200 C 80 170, 160 220, 260 190 S 440 130, 540 175 S 720 230, 940 180" stroke="#B8512F" stroke-width="1" fill="none" opacity="0.3"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Oslo, Norway · Two-Day Guide</p>
+    <h1>The city, on foot<br><em>and by ferry.</em></h1>
+    <p class="lede">A culture-and-nature itinerary built for an active group of three — old town history, fjord-island ferries, and the forest trails that start five minutes from the last metro stop.</p>
+    <div class="hero-meta">
+      <div><span class="label">Season</span><span class="val">Summer (Jun–Aug)</span></div>
+      <div><span class="label">Pace</span><span class="val">Active, full days</span></div>
+      <div><span class="label">Group</span><span class="val">3 travelers, vegetarian</span></div>
+      <div><span class="label">Transit</span><span class="val">24-hr Ruter ticket, both days</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DAY NAV ============ -->
+<nav class="daynav">
+  <div class="daynav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#day1">Day 1 — Old Town &amp; Fortress</a>
+    <a href="#day2">Day 2 — Bygdøy &amp; Vigeland</a>
+    <a href="#poi">All Stops, A–Z</a>
+    <a href="#logistics">Getting Around</a>
+  </div>
+</nav>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How this guide works</p>
+      <h2>One thread per day, not a checklist.</h2>
+      <p>Each day follows a single walkable thread through the city, with one hike and one stretch of water worked in — rather than racing between unrelated sights. Times are suggestions, not a train schedule: linger where it's good, and use the tips to skip ahead if a stop isn't landing for your group.</p>
+    </div>
+
+    <div class="pass-banner">
+      <b>Oslo Pass tip:</b> The Oslo Pass (24 hr ≈ 595 NOK / 48 hr ≈ 845 NOK per person) covers free entry to the Fram Museum, Norsk Folkemuseum, Resistance Museum, and many others, plus unlimited public transport. For 3 adults visiting multiple paid museums over two days, it pays for itself quickly. <a href="https://www.visitoslo.com/en/activities-and-attractions/oslo-pass/" target="_blank">visitoslo.com/oslo-pass →</a>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill">🏰 History &amp; culture</span>
+      <span class="pill">🥾 Forest hikes</span>
+      <span class="pill">⛴ Fjord ferries</span>
+      <span class="pill">🥗 Vegetarian dining</span>
+      <span class="pill">🌲 Norwegian specialities</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ DAY 1 ============ -->
+<div id="day1">
+<div class="day-banner">
+  <div class="wrap">
+    <p class="daytag">Day One</p>
+    <h2>Old Town, Fortress, and a Forest Summit</h2>
+    <p>A walkable thread from the cathedral to the harbor, with one short forest hike and a slow, unhurried picnic dinner by the water as the long summer light holds.</p>
+    <div class="day-stats">
+      <span>Walking: <b>moderate–high</b></span>
+      <span>Hiking: <b>~1.5–2 hrs round trip</b></span>
+      <span>Transit: <b>Metro Line 1</b></span>
+      <span>Starts: <b>~9:30am</b></span>
+    </div>
+  </div>
+</div>
+</div>
+
+<section style="padding-top:48px;">
+  <div class="wrap">
+    <div class="timeline">
+
+      <!-- Stop 1 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">9:30am</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-mobile-time">9:30am</span>
+          <span class="stop-tag culture">History</span>
+          <h3>Oslo Cathedral &amp; Stortorvet</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Open daily, service times vary</span>
+            <span class="info-badge fee-free">✓ Free entry</span>
+          </div>
+          <p>Start in the old town at this 17th-century cathedral, still in active use, with a quietly beautiful painted ceiling. The flower market at Stortorvet alongside it has been trading since the 1800s.</p>
+          <div class="highlight"><b>Highlight:</b> A peaceful, low-effort opener before the day's walking begins — five minutes is enough, twenty is better.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> 8 min walk down Karl Johans Gate</div>
+      </div>
+
+      <!-- Stop 2 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">10:00am</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-mobile-time">10:00am</span>
+          <span class="stop-tag culture">History</span>
+          <h3>Karl Johans Gate → Parliament → Royal Palace</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Outdoors, always accessible</span>
+            <span class="info-badge fee-free">✓ Free — palace gardens open to all</span>
+          </div>
+          <p>Oslo's mile of style: a flat, pedestrian-friendly boulevard running from the train station up to the palace. Pass the Storting (Parliament) midway, then continue to the shaded Palace gardens.</p>
+          <div class="highlight"><b>Highlight:</b> Easy, level walking with cafés and benches the whole way — a good rhythm-setter for the day.</div>
+          <div class="tip"><b>Tip</b>The palace interior is not open to general visitors, but the gardens are lovely and a good spot to pause with a coffee before the day's walking begins.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> 15 min walk back through center toward the harbor</div>
+      </div>
+
+      <!-- Stop 3 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">11:15am</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag culture">History</span>
+          <span class="stop-mobile-time">11:15am</span>
+          <h3>Oslo City Hall (Rådhuset)</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Daily 9:00am – 4:00pm</span>
+            <span class="info-badge fee-free">✓ Free entry</span>
+          </div>
+          <p>One of the city's top sights, not just a photo stop. The interior is lined with huge, vivid murals tracing Norwegian history and rural life — this is where the Nobel Peace Prize is awarded each December.</p>
+          <div class="highlight"><b>Highlight:</b> Free, air-conditioned, genuinely top-tier — allow 45–60 minutes inside.</div>
+          <div class="tip"><b>Tip</b>Note its position right at the City Hall Pier (Rådhusbrygge) — this is where your ferries depart for Bygdøy and the islands.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> 5 min walk along the harborfront</div>
+      </div>
+
+      <!-- Stop 4 - lunch -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">12:15pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag food">Lunch</span>
+          <span class="stop-mobile-time">12:15pm</span>
+          <h3>Nordvegan</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Mon–Thu 11am–8pm · Fri 11am–9pm · Sat 11:30am–9pm · Sun 12–8pm</span>
+            <span class="info-badge fee-paid">Mains ~150–200 NOK</span>
+          </div>
+          <p>An award-winning plant-based restaurant a short walk from Karl Johans Gate, with a build-your-own bowl format — Buddha bowls, curries, and a daily-changing menu. Easy for a group with different appetites.</p>
+          <div class="highlight"><b>Highlight:</b> Reliable, varied, and central — a comfortable reset before the afternoon's walking and hiking.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> 12 min walk to Akershus Fortress</div>
+      </div>
+
+      <!-- Stop 5 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">1:30pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag culture">History</span>
+          <span class="stop-mobile-time">1:30pm</span>
+          <h3>Akershus Fortress &amp; Norwegian Resistance Museum</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Grounds: daily 6am–9pm</span>
+            <span class="info-badge hours">⏰ Museum: daily 10am–5pm (summer)</span>
+          </div>
+          <div class="info-row">
+            <span class="info-badge fee-free">✓ Fortress grounds: Free</span>
+            <span class="info-badge fee-paid">Resistance Museum: ~100 NOK adults</span>
+            <span class="info-badge oslo-pass">✓ Free with Oslo Pass</span>
+          </div>
+          <p>A working military base since 1299, free to wander, with cobbled lanes and ramparts overlooking the fjord. The castle interior is skippable — the real payoff is the <b>Resistance Museum</b>, a moving, detailed account of Norway's WWII occupation and resistance movement.</p>
+          <div class="highlight"><b>Highlight:</b> Genuine substance over scenery — give this an hour, with most of it inside the museum.</div>
+          <div class="tip"><b>Tip</b>Walk the ramparts briefly for the harbor view, but don't let it eat into museum time — the Resistance Museum is the reason to come here. There's also a free Armed Forces Museum on-site if energy allows.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> Walk to nearest metro → Line 1 toward Vettakollen (~20 min)</div>
+      </div>
+
+      <!-- Stop 6 - HIKE -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">3:15pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag hike">Hike</span>
+          <span class="stop-mobile-time">3:15pm</span>
+          <h3>Vettakollen Viewpoint</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Always accessible</span>
+            <span class="info-badge fee-free">✓ Free</span>
+          </div>
+          <p>The best view-to-effort hike near Oslo. A short, well-marked climb through forest from the Vettakollen metro stop (Line 1) to a summit with sweeping views over the city and the Oslofjord. Round trip roughly 1.5–2 hours at a relaxed pace.</p>
+          <div class="highlight"><b>Highlight:</b> Real forest and a real panoramic payoff without needing to go deep into Nordmarka.</div>
+          <div class="tip"><b>Tip</b>Wear proper shoes — the path is packed dirt and can be uneven or damp even in summer. Bring water; there are no facilities at the top.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> Metro back to center (~20 min)</div>
+      </div>
+
+      <!-- Stop 7 - evening -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">6:30pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag food">Evening</span>
+          <span class="stop-mobile-time">6:30pm</span>
+          <h3>Harborfront Picnic at Aker Brygge</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Public benches — always open</span>
+            <span class="info-badge fee-free">✓ Free — pick up supplies at any Kiwi, Rema 1000 or Coop nearby</span>
+          </div>
+          <p>Skip the pricey waterfront restaurants. Pick up bread, brunost (Norwegian brown cheese), flatbread, fruit, and hummus from a grocery store a block inland, then eat at the public benches and lounges along the harborfront — exactly how many Oslo locals spend a warm summer evening.</p>
+          <div class="highlight"><b>Highlight:</b> One of the best, least expensive ways to end a summer evening in Oslo — no reservation, no rush, and daylight runs late past 10pm in June.</div>
+          <div class="choice-box">
+            <span class="label">Prefer a sit-down meal instead?</span>
+            Den Glade Gris and Krishna's Cuisine are both solid vegetarian options back in the center, a short walk or tram ride away. Mains typically 180–250 NOK.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ DAY 2 ============ -->
+<div id="day2">
+<div class="day-banner">
+  <div class="wrap">
+    <p class="daytag">Day Two</p>
+    <h2>Bygdøy by Ferry, Forest Waffles, and Vigeland at Golden Hour</h2>
+    <p>A ferry crossing to the museum peninsula, a coastal walk, and — saved deliberately for late afternoon, when the light is best and the day-trippers have thinned — Oslo's most-loved sculpture park.</p>
+    <div class="day-stats">
+      <span>Walking: <b>moderate</b></span>
+      <span>Ferry: <b>City Hall Pier ↔ Bygdøy</b></span>
+      <span>Transit: <b>Ferry + Metro Line 1</b></span>
+      <span>Starts: <b>~9:30am</b></span>
+    </div>
+  </div>
+</div>
+</div>
+
+<section style="padding-top:48px;">
+  <div class="wrap">
+    <div class="timeline">
+
+      <!-- Stop 1 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">9:30am</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag ferry">Ferry</span>
+          <span class="stop-mobile-time">9:30am</span>
+          <h3>Ferry to Bygdøy — Rådhusbrygge 3</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Every 20 min from 14 March 2026 · Summer daily</span>
+            <span class="info-badge fee-paid">Separate fare from Ruter pass · Check at pier kiosk</span>
+          </div>
+          <p>From City Hall Pier 3 (Rådhusbrygge 3), the summer ferry crosses to Dronningen on the Bygdøy peninsula — a scenic 15–20 minutes. Bus 30 runs year-round and is covered by your regular Ruter ticket if you prefer.</p>
+          <div class="highlight"><b>Highlight:</b> The crossing itself is worth doing for the harbor views — sit on the open deck.</div>
+          <div class="tip"><b>Tip</b>From Dronningen ferry stop it's a 10-minute walk to the Folk Museum, or 5 minutes to the Fram/Kon-Tiki cluster. Check Ruter.no for real-time schedules.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> Arrive Bygdøy · short walk to museums</div>
+      </div>
+
+      <!-- Stop 2 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">10:00am</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag culture">Museum</span>
+          <span class="stop-mobile-time">10:00am</span>
+          <h3>Choose one: Folk Museum, or Fram + Kon-Tiki</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Both open daily 9:30am–6pm (summer)</span>
+          </div>
+          <div class="choice-box">
+            <span class="label">Option A — Norsk Folkemuseum (Norwegian Museum of Cultural History)</span>
+            Open daily 10:00am–5:00pm (summer, 1 May – 4 Oct). Adults: <b>200 NOK</b> · Students: 140 NOK · Seniors (67+): 160 NOK · Under 18: Free · Oslo Pass: Free. Allow 2–3 hours for this option. Features 155+ historic buildings, the 13th-century Gol Stave Church, costumed guides, farm animals, and Café Arkadia on site.
+          </div>
+          <div class="choice-box">
+            <span class="label">Option B — Fram Museum + Kon-Tiki Museum</span>
+            Both open 9:30am–6pm (summer). <b>Fram Museum:</b> Adults 180 NOK · Seniors 140 NOK · Children/Students 70 NOK · Oslo Pass: Free. <b>Combo ticket Fram + Kon-Tiki:</b> Adults 325 NOK · Seniors 250 NOK · Children/Students 125 NOK. Allow 1.5–2 hours for both. Walk onto the actual polar ship; see Thor Heyerdahl's 1947 Pacific raft next door.
+          </div>
+            <div class="tip"><b>2026 update</b>Kon-Tiki completed a major new exhibition in April 2026, with a spectacular new setting for the original raft and new interactive stations — worth noting as a particular draw this year.</div>
+          <div class="tip"><b>Tip</b>If your group leans toward folk culture and craft, take Option A. If exploration and engineering appeal more, take Option B. Either way, don't try to do both — this is an either/or choice.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> 10–15 min walk on signed coastal path</div>
+      </div>
+
+      <!-- Stop 3 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">12:00pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag hike">Walk</span>
+          <span class="stop-mobile-time">12:00pm</span>
+          <h3>Bygdøy Coastal Path</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Always accessible</span>
+            <span class="info-badge fee-free">✓ Free</span>
+          </div>
+          <p>A gentle, flat shoreline trail connecting the museum cluster to the beaches near Huk. Fjord views the whole way — a nice change of pace and a good stretch after museum time. No real elevation, easy footing.</p>
+          <div class="highlight"><b>Highlight:</b> A genuinely relaxing stretch before the afternoon's forest trail.</div>
+        </div>
+      </div>
+
+      <!-- Stop 4 - lunch -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">12:45pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag food">Lunch</span>
+          <span class="stop-mobile-time">12:45pm</span>
+          <h3>Picnic on the Coastal Path</h3>
+          <div class="info-row">
+            <span class="info-badge fee-free">✓ Bring your own — free picnic spots throughout</span>
+          </div>
+          <p>Pack a light lunch before leaving the center, or pick something up at Café Arkadia at Norsk Folkemuseum (open daily 10am–6pm in summer, pastries, sandwiches, salads). Many visitors eat on the benches along the coastal path in summer — it's the natural rhythm of a Bygdøy morning.</p>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> Ferry or Bus 30 back to center (~20 min), then Metro Line 1 to Frognerseteren (~30 min)</div>
+      </div>
+
+      <!-- Stop 5 - HIKE -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">2:00pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag hike">Hike</span>
+          <span class="stop-mobile-time">2:00pm</span>
+          <h3>Frognerseteren → Tryvannstua, Nordmarka Forest</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Trails always accessible · Metro Line 1 to Frognerseteren</span>
+            <span class="info-badge fee-free">✓ Free · Metro included in Ruter ticket</span>
+          </div>
+          <p>From the end of Metro Line 1 (469m elevation), a moderate, well-marked trail leads through classic Nordic woodland to Tryvannstua, a lakeside cabin. Choose the shorter ~3km out-and-back, or continue further toward Holmenkollen to see the famous ski jump on the way down.</p>
+          <div class="highlight"><b>Highlight:</b> Genuine forest, small lakes, and a coffee-and-waffle stop built in — follow the blue trail markers (red = winter ski routes).</div>
+          <div class="tip"><b>Tip</b>The metro ride up to Frognerseteren is scenic in its own right — watch the city give way to forest. Takes about 30 minutes from the center.</div>
+        </div>
+      </div>
+
+      <!-- Stop 6 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">3:45pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag food">Coffee &amp; cake</span>
+          <span class="stop-mobile-time">3:45pm</span>
+          <h3>Frognerseteren — Kafé Seterstua</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Open daily (except 24–25 Dec) · self-service, no reservation</span>
+            <span class="info-badge fee-paid">Waffles ~90–120 NOK · Coffee ~50–70 NOK</span>
+          </div>
+          <p>The cafeteria side of the 1891 dragon-style lodge, right at the trailhead. Self-service, no booking needed, terrace with views over Oslo below. Norwegian waffles with sour cream and jam are the classic order; apple cake is the other signature.</p>
+          <div class="highlight"><b>Highlight:</b> A proper Norwegian tradition stop that earns itself after the hike — and the panorama from the terrace is one of the best city views in Oslo.</div>
+        </div>
+      </div>
+
+      <div class="stop-card travel" style="grid-column:1/-1; margin-left:84px;">
+        <div class="travel-text"><span class="icon">→</span> Metro back into the city (~30 min) → short tram to Frogner Park</div>
+      </div>
+
+      <!-- Stop 7 -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">5:30pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag culture">Park</span>
+          <span class="stop-mobile-time">5:30pm</span>
+          <h3>Vigeland Sculpture Park, Frogner Park</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Open 24 hours, every day of the year</span>
+            <span class="info-badge fee-free">✓ Free entry always</span>
+          </div>
+          <p>Over 200 Gustav Vigeland sculptures spread across open lawns — one of Oslo's very best sights, at its best precisely at this hour: after museum crowds have thinned, with the long summer light still holding for hours. The park never closes, so there's no rush.</p>
+          <div class="highlight"><b>Highlight:</b> Flat, expansive, genuinely one of the world's great outdoor sculpture installations — designed by Vigeland himself. Locals come here to jog and picnic; it doesn't feel like a tourist trap.</div>
+          <div class="tip"><b>Tip</b>Tram 12 or Bus 20 to Frogner plass drops you right at the main gate. Allow at least 1.5 hours to walk the full 850m axis from the bridge to the Wheel of Life.</div>
+        </div>
+      </div>
+
+      <!-- Stop 8 - dinner -->
+      <div class="stop">
+        <div class="stop-time"><span class="t">7:30pm</span></div>
+        <div class="stop-dot"></div>
+        <div class="stop-card">
+          <span class="stop-tag food">Dinner</span>
+          <span class="stop-mobile-time">7:30pm</span>
+          <h3>Closing Dinner: Krishna's Cuisine</h3>
+          <div class="info-row">
+            <span class="info-badge hours">⏰ Mon–Sat 12pm–10pm · Sun 1pm–9pm</span>
+            <span class="info-badge fee-paid">Mains ~130–180 NOK</span>
+          </div>
+          <p>A long-established vegetarian Indian restaurant in the city center at Kirkegata 34, open since 1990 and consistently praised for generous portions, warm service, and a relaxed atmosphere. A dependable, unhurried way to close out two full days of walking, hiking, and ferries.</p>
+          <div class="choice-box">
+            <span class="label">Alternative: Nordvegan (city center)</span>
+            Open until 8–9pm depending on the day — the same reliable plant-based kitchen from Day 1 lunch. Worth returning if the group particularly enjoyed it. Address: Kristian IVs gate 15B.
+          </div>
+          <div class="tip"><b>Restaurant tip</b>Oslo's dining scene evolves quickly. Always do a quick search the morning of your visit to confirm a restaurant is still open and check current hours — 30 seconds that can save a disappointing walk.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ POI REFERENCE ============ -->
+<section id="poi">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Quick reference</p>
+      <h2>Every stop, A–Z</h2>
+      <p>The full list of points of interest from both days, with verified summer 2026 hours and fees for quick lookup.</p>
+    </div>
+    <div class="poi-grid">
+
+      <div class="poi-card">
+        <h4>Akershus Fortress (Grounds)</h4>
+        <p>Medieval fortress grounds (1299), free to wander.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Daily 6am–9pm</span>
+          <span><span class="lbl">Fee</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Norwegian Resistance Museum</h4>
+        <p>Norway's WWII occupation and resistance story, on the Akershus grounds.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Daily 10am–5pm (summer)</span>
+          <span><span class="lbl">Adults</span> <span class="val-paid">~100 NOK</span></span>
+          <span><span class="lbl">Oslo Pass</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Oslo Cathedral &amp; Stortorvet</h4>
+        <p>17th-century cathedral with painted ceiling; historic flower market alongside.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Open daily, service times vary</span>
+          <span><span class="lbl">Fee</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Oslo City Hall (Rådhuset)</h4>
+        <p>Nobel Peace Prize venue; vast murals of Norwegian history inside.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Daily 9am–4pm</span>
+          <span><span class="lbl">Fee</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Royal Palace Gardens</h4>
+        <p>Shaded, flat gardens around the 19th-century Royal Palace.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Always open</span>
+          <span><span class="lbl">Fee</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Norsk Folkemuseum</h4>
+        <p>Open-air museum with 155+ historic buildings; 13th-century stave church.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Daily 10am–5pm (1 May–4 Oct)</span>
+          <span><span class="lbl">Adults</span> <span class="val-paid">200 NOK</span></span>
+          <span><span class="lbl">Seniors 67+</span> <span class="val-paid">160 NOK</span></span>
+          <span><span class="lbl">Under 18</span> <span class="val-free">Free</span></span>
+          <span><span class="lbl">Oslo Pass</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Fram Museum</h4>
+        <p>Houses the actual polar ship Fram; walk onto the deck.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Daily 9:30am–6pm (May–Sep)</span>
+          <span><span class="lbl">Adults</span> <span class="val-paid">180 NOK</span></span>
+          <span><span class="lbl">Seniors</span> <span class="val-paid">140 NOK</span></span>
+          <span><span class="lbl">Combo+Kon-Tiki</span> <span class="val-paid">325 NOK adults</span></span>
+          <span><span class="lbl">Oslo Pass</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Kon-Tiki Museum</h4>
+        <p>Thor Heyerdahl's 1947 Pacific raft and Easter Island expeditions.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Daily 9:30am–6pm (Jun–Aug)</span>
+          <span><span class="lbl">Adults</span> <span class="val-paid">180 NOK</span></span>
+          <span><span class="lbl">Seniors 67+</span> <span class="val-paid">140 NOK</span></span>
+          <span><span class="lbl">Students/Child</span> <span class="val-paid">70 NOK</span></span>
+          <span><span class="lbl">Combo+Fram</span> <span class="val-paid">325 NOK adults</span></span>
+          <span><span class="lbl">Oslo Pass</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Bygdøy Coastal Path</h4>
+        <p>Flat shoreline trail linking the museum cluster to Huk beach.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Always accessible</span>
+          <span><span class="lbl">Fee</span> <span class="val-free">Free</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Vettakollen Viewpoint</h4>
+        <p>Short forest climb to a summit with city and fjord panorama.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> Always accessible</span>
+          <span><span class="lbl">Fee</span> <span class="val-free">Free</span></span>
+          <span><span class="lbl">Access</span> Metro Line 1 to Vettakollen</span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Frognerseteren &amp; Tryvannstua</h4>
+        <p>1891 lodge and Nordmarka forest trail, end of Metro Line 1.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Trails</span> <span class="val-free">Free, always open</span></span>
+          <span><span class="lbl">Kafé</span> Open daily (exc. 24–25 Dec)</span>
+          <span><span class="lbl">Waffles</span> <span class="val-paid">~90–120 NOK</span></span>
+        </div>
+      </div>
+
+      <div class="poi-card">
+        <h4>Vigeland Sculpture Park</h4>
+        <p>200+ Gustav Vigeland sculptures in Frogner Park — world's largest single-artist installation.</p>
+        <div class="poi-info">
+          <span><span class="lbl">Hours</span> 24 hrs, every day of year</span>
+          <span><span class="lbl">Fee</span> <span class="val-free">Free always</span></span>
+          <span><span class="lbl">Transit</span> Tram 12 / Bus 20 to Frogner plass</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============ LOGISTICS ============ -->
+<section id="logistics">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Before you go</p>
+      <h2>Getting around</h2>
+      <p>Practical notes worth knowing before the first morning.</p>
+    </div>
+    <div class="logi-grid">
+
+      <div class="logi-item">
+        <span class="label">Ticket</span>
+        <h4>24-hour Ruter pass</h4>
+        <p>Covers metro, tram, bus, and the public island ferries (B1/B2) within Zone 1. Buy via the Ruter app, station kiosk, or staffed counter. <em>The Bygdøy summer ferry uses a separate fare — check at the pier kiosk.</em></p>
+      </div>
+
+      <div class="logi-item">
+        <span class="label">Consider</span>
+        <h4>Oslo Pass</h4>
+        <p>24 hr ≈ 595 NOK / 48 hr ≈ 845 NOK per person (2026). Covers free entry to Fram, Folkemuseum, Resistance Museum, and 30+ more, plus unlimited transit. Very likely worth it for two full days with 3 adults visiting multiple paid sites.</p>
+      </div>
+
+      <div class="logi-item">
+        <span class="label">Footwear</span>
+        <h4>Real walking shoes</h4>
+        <p>Both hikes are short and well-marked, but forest paths are packed dirt and can be uneven or damp even in summer. Light hikers or sturdy trainers over city shoes.</p>
+      </div>
+
+      <div class="logi-item">
+        <span class="label">Daylight</span>
+        <h4>Long summer evenings</h4>
+        <p>Oslo in June/July sees daylight past 10pm. This is why Vigeland Park and the harborfront picnic are scheduled for early evening — you'll have all the light you need.</p>
+      </div>
+
+      <div class="logi-item">
+        <span class="label">Trail markers</span>
+        <h4>Blue vs. red in Nordmarka</h4>
+        <p>Follow <b>blue</b> trail markers for summer hiking. Red markers indicate winter cross-country ski routes.</p>
+      </div>
+
+      <div class="logi-item">
+        <span class="label">Budget</span>
+        <h4>Picnics save real money</h4>
+        <p>Norway is expensive. Grocery stores (Kiwi, Rema 1000, Coop) are a block inland from most tourist areas — good bread, brunost, fruit, hummus — and a harborfront picnic beats most restaurant meals on atmosphere anyway.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Oslo, two days — culture, hikes, and ferries.</span>
+    <span class="credit">PREPARED FOR THREE TRAVELERS · SUMMER ITINERARY · HOURS & FEES VERIFIED JUNE 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
