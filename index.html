@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel With Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --parchment:   #F7F2E8;
+      --parchment-d: #EDE6D3;
+      --ink:         #2A2118;
+      --ink-mid:     #6B5B47;
+      --ink-light:   #9C8A75;
+      --rust:        #A0432A;
+      --rust-light:  #C7705A;
+      --cream:       #FBF8F2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--parchment-d);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rust); }
+
+    /* HERO */
+    .hero {
+      background: var(--parchment);
+      padding: 7vw 5vw 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      min-height: 78vh;
+      border-bottom: 1px solid var(--parchment-d);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: var(--parchment-d);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--rust);
+    }
+
+    .hero-body {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      max-width: 380px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--ink);
+      padding: 0.8rem 2.2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--rust); }
+
+    /* OSLO STAMP */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding-bottom: 2rem;
+    }
+
+    .destination-stamp {
+      position: relative;
+      transform: rotate(-4deg);
+      width: 280px;
+    }
+
+    .stamp-inner {
+      border: 3px solid var(--rust);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .stamp-inner::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed var(--rust-light);
+      opacity: 0.5;
+    }
+
+    .stamp-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .stamp-city {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--rust);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stamp-country {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+    }
+
+    .stamp-year {
+      display: block;
+      margin-top: 0.8rem;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--rust-light);
+    }
+
+    /* DIVIDER */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 4rem 5vw 2rem;
+    }
+
+    .section-divider hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid var(--parchment-d);
+    }
+
+    .section-divider span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      white-space: nowrap;
+    }
+
+    /* GUIDES ACCORDION */
+    .guides {
+      padding: 0 5vw 6rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .guide-item {
+      border-bottom: 1px solid var(--parchment-d);
+    }
+
+    .guide-item:first-child {
+      border-top: 1px solid var(--parchment-d);
+    }
+
+    .guide-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.8rem 0.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .guide-item summary::-webkit-details-marker { display: none; }
+
+    .guide-item summary:hover { background: var(--parchment); }
+
+    .guide-item .card-region {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      min-width: 150px;
+    }
+
+    .guide-item summary h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ink);
+      flex: 1;
+    }
+
+    .guide-item .toggle-icon {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: var(--ink-light);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .guide-item[open] .toggle-icon { transform: rotate(45deg); color: var(--rust); }
+
+    .guide-item .card-body {
+      padding: 0 0.5rem 2rem 0.5rem;
+      max-width: 640px;
+    }
+
+    .guide-item .card-body p {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .card-arrow::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .card-arrow:hover::after { transform: translateX(4px); }
+
+    /* COMING SOON ITEM */
+    .guide-item.coming-soon summary { cursor: default; opacity: 0.5; }
+    .guide-item.coming-soon summary:hover { background: none; }
+    .guide-item.coming-soon .toggle-icon { display: none; }
+
+    /* ABOUT STRIP */
+    .about-strip {
+      background: var(--ink);
+      color: var(--parchment);
+      padding: 5rem 5vw;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-strip h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--parchment);
+    }
+
+    .about-strip h2 em {
+      font-style: italic;
+      color: var(--rust-light);
+    }
+
+    .about-text {
+      font-size: 0.97rem;
+      color: var(--ink-light);
+      line-height: 1.85;
+      max-width: 560px;
+    }
+
+    .about-text p + p { margin-top: 1rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--parchment-d);
+      padding: 2rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+    }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: var(--ink-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 3rem 5vw 4rem;
+      }
+      .hero-right {
+        justify-content: flex-start;
+        padding-bottom: 0;
+      }
+      .about-strip {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Travel With Me</a>
+    <ul class="nav-links">
+      <li><a href="#guides">Guides</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Personal travel guides</p>
+      <h1 class="hero-title">See the world<br /><em>slowly.</em></h1>
+      <p class="hero-body">
+        Hand-written guides from places I've wandered — written for the curious
+        traveller who prefers a café conversation to a checklist.
+      </p>
+      <a class="hero-cta" href="#guides">Read the guides</a>
+    </div>
+
+    <div class="hero-right">
+      <div class="destination-stamp">
+        <div class="stamp-inner">
+          <div class="stamp-number">Guide No. 001</div>
+          <div class="stamp-city">Oslo</div>
+          <div class="stamp-country">Norway · Scandinavia</div>
+          <span class="stamp-year">First light in the fjord city</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" id="guides">
+    <hr /> <span>Current guides</span> <hr />
+  </div>
+
+  <div class="guides">
+
+    <details class="guide-item">
+      <summary>
+        <span class="card-region">Nordic · Iceland</span>
+        <h2>Iceland</h2>
+        <span class="toggle-icon">+</span>
+      </summary>
+      <div class="card-body">
+        <p>
+          Three days from Reykjavik's basalt-inspired streets, around the
+          Golden Circle, to glaciers and black sand on the South Coast.
+        </p>
+        <a class="card-arrow" href="iceland.html">Read the guide</a>
+      </div>
+    </details>
+
+    <details class="guide-item">
+      <summary>
+        <span class="card-region">Scandinavia · Norway</span>
+        <h2>Oslo</h2>
+        <span class="toggle-icon">+</span>
+      </summary>
+      <div class="card-body">
+        <p>
+          From Frogner Park at dawn to the Munch Museum by afternoon — a full
+          itinerary for three unhurried days in Norway's capital.
+        </p>
+        <a class="card-arrow" href="oslo-itinerary.html">Read the guide</a>
+      </div>
+    </details>
+
+    <details class="guide-item">
+      <summary>
+        <span class="card-region">Scandinavia · Norway</span>
+        <h2>Bergen</h2>
+        <span class="toggle-icon">+</span>
+      </summary>
+      <div class="card-body">
+        <p>
+          Wooden wharves, a mountaintop lake, and one of the rainiest cities
+          on earth — a single, full day from Bryggen to the harbor lights.
+        </p>
+        <a class="card-arrow" href="bergen.html">Read the guide</a>
+      </div>
+    </details>
+
+    <details class="guide-item coming-soon">
+      <summary>
+        <span class="card-region">Coming soon</span>
+        <h2>More to come</h2>
+      </summary>
+    </details>
+
+  </div>
+
+  <section class="about-strip" id="about">
+    <h2>Travel<br />is the<br /><em>point.</em></h2>
+    <div class="about-text">
+      <p>
+        These guides aren't culled from listicles or press trips. They're written
+        from real visits — with notes on what I'd do differently, which detours
+        were worth it, and where to find a quiet corner in a crowded city.
+      </p>
+      <p>
+        My aim is simple: to share the version of a place that takes a little
+        longer to find, and is always more interesting for it.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">Travel With Me</span>
+    <span class="footer-note">Written from the road.</span>
+  </footer>
+
+</body>
+</html>
