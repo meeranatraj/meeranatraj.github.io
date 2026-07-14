@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iceland — Reykjavik to the South Coast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --basalt: #1B1D1F;
+    --basalt-deep: #121315;
+    --glacier: #7FAAB3;
+    --glacier-light: #B7D6DB;
+    --snow: #F3F5F4;
+    --snow-warm: #E9E7E1;
+    --lava: #B5502E;
+    --lava-soft: #D97C55;
+    --ink: #20272A;
+    --slate: #5C6670;
+    --line: rgba(27,29,31,0.12);
+    --serif: 'Space Grotesk', sans-serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--snow); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+  a { color: var(--lava); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* SITE NAV */
+  .site-nav {
+    background: var(--basalt-deep); color: var(--snow);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 46px;
+  }
+  .site-nav a { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--snow); opacity: 0.75; }
+  .site-nav a.back { color: var(--lava-soft); opacity: 1; }
+  .site-nav a:hover { opacity: 1; }
+  .site-nav .other-guides { display: flex; gap: 20px; }
+
+  /* HERO */
+  .hero { position: relative; background: linear-gradient(180deg, var(--basalt-deep), var(--basalt)); color: var(--snow); padding: 4.5rem 0 3.5rem; overflow: hidden; }
+  .hero .wrap { position: relative; z-index: 2; }
+  .eyebrow { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lava-soft); margin-bottom: 1.1rem; display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--lava-soft); }
+  .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.05; margin-bottom: 1.2rem; }
+  .hero h1 span { color: var(--glacier-light); }
+  .hero p.lede { font-size: 1.05rem; max-width: 600px; color: var(--glacier-light); margin-bottom: 2rem; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 28px; border-top: 1px solid rgba(243,245,244,0.18); padding-top: 22px; }
+  .hero-meta div { font-size: 0.9rem; }
+  .hero-meta .label { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--glacier); margin-bottom: 3px; }
+  .hero-meta .val { color: var(--snow); font-weight: 500; }
+
+  /* DAY NAV */
+  .daynav { position: sticky; top: 0; z-index: 50; background: rgba(243,245,244,0.96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  .daynav-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; display: flex; gap: 2px; overflow-x: auto; }
+  .daynav a { font-family: var(--mono); font-size: 12px; color: var(--ink); text-decoration: none; padding: 14px 12px; white-space: nowrap; border-bottom: 2px solid transparent; opacity: 0.65; }
+  .daynav a:hover { opacity: 1; border-bottom-color: var(--lava); }
+
+  section { padding: 3.5rem 0; }
+  .section-head { margin-bottom: 2rem; }
+  .section-head .eyebrow { color: var(--lava); }
+  .section-head .eyebrow::before { background: var(--lava); }
+  .section-head h2 { font-family: var(--serif); font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 600; margin-bottom: 0.6rem; }
+  .section-head p { color: var(--slate); max-width: 560px; font-size: 1rem; }
+
+  hr.divider { border: none; height: 1px; background: var(--line); margin: 0; }
+
+  /* DAY BANNER */
+  .day-banner { background: var(--basalt); color: var(--snow); padding: 2.6rem 0 2.2rem; }
+  .day-banner .daytag { font-family: var(--mono); font-size: 12px; color: var(--lava-soft); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .day-banner h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 4.2vw, 2.5rem); margin-bottom: 10px; }
+  .day-banner p { color: var(--glacier-light); max-width: 600px; font-size: 0.98rem; margin-bottom: 16px; }
+  .day-stats { display: flex; flex-wrap: wrap; gap: 20px; }
+  .day-stats span { font-family: var(--mono); font-size: 11.5px; color: var(--glacier); }
+  .day-stats span b { color: var(--snow); font-weight: 500; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding: 2.5rem 0 0.5rem 56px; }
+  .timeline::before { content: ''; position: absolute; left: 22px; top: 4px; bottom: 4px; width: 1px; background: var(--line); }
+  @media (max-width: 600px) { .timeline { padding-left: 40px; } .timeline::before { left: 14px; } }
+
+  .stop { position: relative; margin-bottom: 2.4rem; }
+  .stop:last-child { margin-bottom: 0; }
+  .stop-num { position: absolute; left: -56px; top: -2px; width: 32px; height: 32px; border-radius: 50%; background: var(--basalt); color: var(--glacier-light); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.75rem; }
+  @media (max-width: 600px) { .stop-num { left: -40px; width: 26px; height: 26px; font-size: 0.65rem; } }
+  .stop h3 { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; margin-bottom: 0.4rem; }
+  .stop p { color: #454F52; font-size: 0.95rem; }
+  .stop p + p { margin-top: 0.5rem; }
+  .stop p strong, .stop p b { color: var(--basalt); }
+  .stop .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0.6rem 0; }
+  .stop .badge { font-family: var(--mono); font-size: 0.72rem; padding: 3px 9px; border-radius: 100px; background: rgba(127,170,179,0.12); color: #2f4a50; }
+  .stop .badge.fee { background: rgba(181,80,46,0.1); color: var(--lava); }
+  .stop .tip { display: block; margin-top: 0.6rem; font-size: 0.85rem; color: var(--slate); background: rgba(92,102,112,0.07); border-left: 2px solid var(--slate); padding: 0.5rem 0.75rem; }
+  .stop .warn { display: block; margin-top: 0.6rem; font-size: 0.85rem; color: var(--lava); background: rgba(181,80,46,0.08); border-left: 2px solid var(--lava); padding: 0.5rem 0.75rem; font-weight: 500; }
+
+  /* POI GRID */
+  .poi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .poi-card { background: var(--snow); padding: 1.3rem; }
+  .poi-card h4 { font-family: var(--serif); font-size: 0.98rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .poi-card p { font-size: 0.85rem; color: var(--slate); margin-bottom: 0.6rem; }
+  .poi-card .info { font-family: var(--mono); font-size: 0.72rem; color: var(--ink); display: flex; flex-direction: column; gap: 3px; }
+
+  /* LOGISTICS */
+  .logi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .logi-item .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lava); display: block; margin-bottom: 6px; }
+  .logi-item h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+  .logi-item p { font-size: 0.88rem; color: var(--slate); }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem 0; text-align: center; font-family: var(--mono); font-size: 0.72rem; color: #8b939a; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="back" href="index.html">&larr; Travel With Me</a>
+  <div class="other-guides">
+    <a href="oslo-itinerary.html">Oslo</a>
+    <a href="bergen.html">Bergen</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Iceland — 3 Day Road Trip</p>
+    <h1>Basalt city,<br><span>glacier coast.</span></h1>
+    <p class="lede">A capital-city walk, the classic Golden Circle loop, and a long drive along the South Coast — waterfalls, glaciers, and a black sand beach where the ocean cannot be trusted.</p>
+    <div class="hero-meta">
+      <div><span class="label">Days</span><span class="val">3</span></div>
+      <div><span class="label">Day 1</span><span class="val">Reykjavik · ~2 mi walking</span></div>
+      <div><span class="label">Day 2</span><span class="val">Golden Circle · 270 km, ~4 hr driving</span></div>
+      <div><span class="label">Day 3</span><span class="val">South Coast · to Jökulsárlón</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="daynav">
+  <div class="daynav-inner">
+    <a href="#day1">Day 1 · Reykjavik</a>
+    <a href="#day2">Day 2 · Golden Circle</a>
+    <a href="#day3">Day 3 · South Coast</a>
+    <a href="#logistics">Before You Go</a>
+  </div>
+</nav>
+
+<!-- ===== DAY 1 ===== -->
+<div class="day-banner" id="day1">
+  <div class="wrap">
+    <p class="daytag">Day 1</p>
+    <h2>Around Reykjavik</h2>
+    <p>A downhill route through the capital, mostly on foot.</p>
+    <div class="day-stats"><span>Distance <b>~2 mi / 3 km</b></span><span>Terrain <b>Mostly downhill</b></span></div>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-num">1</div>
+        <h3>Hallgrímskirkja Church &amp; Rainbow Street</h3>
+        <p>The towering concrete church that defines the skyline, its design echoing Iceland's basalt lava columns. Inside is a 25-ton pipe organ. Walk out front and down <strong>Skólavörðustígur</strong> — Rainbow Street — painted in vibrant colors leading toward the church.</p>
+        <span class="badge fee">Tower observation deck: small fee</span>
+      </div>
+      <div class="stop">
+        <div class="stop-num">2</div>
+        <h3>Sun Voyager &amp; Waterfront Stroll</h3>
+        <p>From the bottom of Rainbow Street, cut north toward the ocean (~10 min) to the <strong>Sun Voyager (Sólfarið)</strong>, a stainless-steel sculpture resembling a Viking longship, facing Faxaflói Bay toward Mount Esja. Continue west along the seaside path toward the harbor, another ~10 minutes.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">3</div>
+        <h3>Harpa Concert Hall</h3>
+        <p>Wrapped in over 10,000 geometric glass panels designed by Ólafur Elíasson to mimic the basalt landscape and catch the shifting light. The foyer is free to enter — honeycomb windows cast kaleidoscopic patterns on the floor. Worth heading upstairs for the view.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">4</div>
+        <h3>Old Harbor</h3>
+        <p>Walk out of Harpa and amble into the historic Old Harbor district.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">5</div>
+        <h3>Parliament Square &amp; Tjörnin Lake</h3>
+        <p><strong>Austurvöllur Square</strong>, the public heart of the city, bordered by the stone Parliament Building (Alþingi) and Reykjavik Cathedral. A minute south is <strong>Tjörnin (The Pond)</strong>, ringed by old houses and busy with swans and ducks.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">6</div>
+        <h3>Reykjavik City Hall</h3>
+        <p>Right on the water's edge — the lobby holds a large, highly detailed 3D topographical map of Iceland.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== DAY 2 ===== -->
+<div class="day-banner" id="day2">
+  <div class="wrap">
+    <p class="daytag">Day 2</p>
+    <h2>The Golden Circle</h2>
+    <p>A 270 km loop east of Reykjavik — around 3 hr 59 min of driving in total, before stops.</p>
+    <div class="day-stats"><span>Distance <b>270 km</b></span><span>Drive time <b>~4 hr</b></span></div>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-num">1</div>
+        <h3>Þingvellir National Park</h3>
+        <p>45 minutes from Reykjavik. Birthplace of Iceland's ancient parliament, Alþingi, founded in 930. The Visitor Center sits near the P1 parking lot; from there, the Almannagja Gorge walk is one of the clearest places to see the North American and Eurasian tectonic plates meet.</p>
+        <p>Around the site: the Silfra fissure (east of the center), a bridge over the Peningagjá fissure (north), Þingvellir Church (straight ahead), Snorri's Booth and the supposed Law Rock site, Drekkingarhylur pond, and — further north — Öxarárfoss waterfall. Þingvallavatn, Iceland's largest natural lake, feeds the Silfra fissure.</p>
+        <div class="badges">
+          <span class="badge">Plan ~1.5 hr</span>
+        </div>
+        <span class="tip">Parking: P1 (Hakid) is the main entry point at the top of Almannagja Gorge. P2 sits below Öxarárfoss, P3 is 900m north of the falls, and P5 is closest to the church and Silfra Fissure.</span>
+      </div>
+      <div class="stop">
+        <div class="stop-num">2</div>
+        <h3>Efstidalur Dairy Farm</h3>
+        <p>Between Þingvellir and Geysir — a farm-to-table ice cream stop, open from 10am.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">3</div>
+        <h3>Haukadalur Geothermal Area</h3>
+        <p>40 minute drive. Home to the dormant Great Geysir and the active Strokkur, which erupts every 4–10 minutes.</p>
+        <div class="badges"><span class="badge">Plan ~1 hr</span></div>
+      </div>
+      <div class="stop">
+        <div class="stop-num">4</div>
+        <h3>Gullfoss Falls</h3>
+        <p>10 minutes from Geysir. The upper parking lot sits near the Visitor Center (restrooms, shop, café); from there a short hike leads down to a closer viewpoint. The full round-trip trail is about 2 km (1.2 mi), 15–30 minutes. The Geysir Center across the road has restaurants and Hotel Geysir.</p>
+        <div class="badges"><span class="badge">Plan ~1 hr</span></div>
+      </div>
+      <div class="stop">
+        <div class="stop-num">5</div>
+        <h3>Faxi Waterfall</h3>
+        <p>Featured in Game of Thrones. From Gullfoss, continue on Route 36, then east 17.3 km, left onto Route 48, and another 5.6 km to the marked exit. A short walk from the parking lot reaches the viewpoint.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">6</div>
+        <h3>Friðheimar Tomato Farm &amp; Restaurant</h3>
+        <p>A family-run tomato farm and restaurant right off the Golden Circle route (watch for the sign — easy to miss). About 30 minutes from Geysir via Route 35 / Biskupstungnabraut. Reasonably priced — soup with home-baked bread and coffee or tea runs around 2,000 ISK.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">7</div>
+        <h3>Secret Lagoon</h3>
+        <p>30 minutes from Gullfoss, near Flúðir. Iceland's oldest natural pool, dating to 1891, set in a geothermal area with a small erupting geyser nearby.</p>
+        <div class="badges"><span class="badge fee">Reservation suggested — evening slot, e.g. 6pm</span></div>
+      </div>
+      <div class="stop">
+        <div class="stop-num">8</div>
+        <h3>Kerið Crater Lake</h3>
+        <p>30 minutes from Secret Lagoon, near Selfoss — a fitting last stop on the loop. Also called the "Eye of the World," a red volcanic rock caldera holding a striking turquoise-blue lake.</p>
+        <div class="badges"><span class="badge">Plan 30–40 min</span><span class="badge fee">~700 ISK entrance</span><span class="badge">Free parking</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== DAY 3 ===== -->
+<div class="day-banner" id="day3">
+  <div class="wrap">
+    <p class="daytag">Day 3</p>
+    <h2>The South Coast</h2>
+    <p>East from Reykjavik on fully paved, easily navigable roads — waterfalls, glaciers, and a lagoon of drifting icebergs.</p>
+    <div class="day-stats"><span>Furthest point <b>Jökulsárlón, ~380 km</b></span></div>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-num">1</div>
+        <h3>Seljalandsfoss Waterfall</h3>
+        <p>120 km (75 mi) east of Reykjavik. A trail circles directly behind the falling water. A short walk away, Gljúfurárfoss is tucked into a crack in the cliff.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">2</div>
+        <h3>Skógafoss Waterfall</h3>
+        <p>30 km (18 mi) past Seljalandsfoss. A towering 60-meter drop, with stairs climbing to the top.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">3</div>
+        <h3>Sólheimajökull Glacier</h3>
+        <p>A 10 km drive off Route 1. Streaks of white, blue, and black ice form dramatic ridges and patterns; an easy 10-minute walk from the parking lot. Hvolsvöllur, along the route, is the most convenient stop for fuel, food, or restrooms.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">4</div>
+        <h3>Dyrhólaey Cliffs</h3>
+        <p>Two parking areas — the lower one gives access to Kirkjufjara beach and the puffin viewing boardwalks. Puffins are most active in the evening.</p>
+        <span class="warn">Visitor hours are restricted during puffin season (roughly April–August); Dyrhólaey closes at 7pm.</span>
+      </div>
+      <div class="stop">
+        <div class="stop-num">5</div>
+        <h3>Reynisfjara Black Sand Beach</h3>
+        <p>Near Vík, 187 km (116 mi) from Reykjavik. Known for its basalt sea cave and the Reynisdrangar rock stacks rising from the water.</p>
+        <span class="warn">Sneaker waves: the surf here can turn fierce without warning, even on calm days — mini tsunamis that strike the shore suddenly. Stay well back from the water at all times.</span>
+      </div>
+      <div class="stop">
+        <div class="stop-num">6</div>
+        <h3>Fjaðrárgljúfur Canyon</h3>
+        <p>Iceland's most famous canyon, known for its serpentine shape — about 50 minutes east of Vík. Restrooms at the main parking lot; a short walk from the upper lot reaches the main viewpoint, and a flat path continues to a full canyon panorama.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">7</div>
+        <h3>Vatnajökull National Park</h3>
+        <p>Home to the Skaftafell area, 325 km (202 mi) from the capital — glacier views and hiking trails.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-num">8</div>
+        <h3>Diamond Beach &amp; Jökulsárlón Glacier Lagoon</h3>
+        <p>Massive icebergs drift in the Jökulsárlón lagoon before washing ashore on the black sands of Diamond Beach, a 3-minute drive away — one of the best stops on the whole South Coast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== LOGISTICS ===== -->
+<section id="logistics">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Before you go</p>
+      <h2>Getting around</h2>
+      <p>Practical notes worth knowing before day one.</p>
+    </div>
+    <div class="logi-grid">
+      <div class="logi-item">
+        <span class="label">Route</span>
+        <h4>Golden Circle reference map</h4>
+        <p>A route attraction map is worth having on hand for Day 2 — see <a href="https://adventures.is/iceland/attractions/golden-circle/" target="_blank" rel="noopener">adventures.is's Golden Circle guide</a> for the full loop layout.</p>
+      </div>
+      <div class="logi-item">
+        <span class="label">Safety</span>
+        <h4>Sneaker waves at Reynisfjara</h4>
+        <p>The single most important safety note on this trip — never turn your back on the ocean at Reynisfjara, and keep well clear of the waterline.</p>
+      </div>
+      <div class="logi-item">
+        <span class="label">Timing</span>
+        <h4>Puffin season</h4>
+        <p>Roughly April to August at Dyrhólaey, with restricted visitor hours (closes 7pm) and best viewing in the evening.</p>
+      </div>
+      <div class="logi-item">
+        <span class="label">Fuel &amp; food</span>
+        <h4>Hvolsvöllur, Day 3</h4>
+        <p>The most convenient stop for fuel, food, or restrooms along the South Coast route.</p>
+      </div>
+      <div class="logi-item">
+        <span class="label">Reservations</span>
+        <h4>Secret Lagoon, Day 2</h4>
+        <p>Book an evening slot in advance — 6pm is a good target so it caps off the day.</p>
+      </div>
+      <div class="logi-item">
+        <span class="label">Driving</span>
+        <h4>All paved, all easy</h4>
+        <p>Both the Golden Circle and South Coast routes described here are fully paved and straightforward to self-drive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">ICELAND · 3 DAYS · REYKJAVIK → GOLDEN CIRCLE → SOUTH COAST</div>
+</footer>
+
+</body>
+</html>
