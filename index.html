@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natraj Family — Europe Trip, Aug 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A44;
+    --navy-soft:#2B3F63;
+    --parchment:#F7F2E7;
+    --card:#FFFDF8;
+    --gold:#B8935A;
+    --teal:#3E6B66;
+    --ink:#2A2723;
+    --ink-soft:#6B6255;
+    --line:#E2D8C3;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px 80px;}
+
+  /* ---- Header ---- */
+  header{
+    background:var(--navy);
+    color:#F4EFE3;
+    padding:64px 24px 48px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 12% 30%, rgba(184,147,90,0.16), transparent 40%),
+      radial-gradient(circle at 88% 70%, rgba(62,107,102,0.22), transparent 45%);
+    pointer-events:none;
+  }
+  header .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--gold);
+    margin:0 0 14px;
+  }
+  header h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(32px,5vw,52px);
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  header .sub{
+    font-size:15px;
+    color:#C9C2B2;
+    margin:0;
+  }
+
+  /* Route strip */
+  .route{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:0;
+    margin-top:34px;
+    position:relative;
+    z-index:1;
+  }
+  .route .stop{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.04em;
+    color:#F4EFE3;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(244,239,227,0.25);
+    border-radius:999px;
+    padding:5px 12px;
+    margin:4px;
+  }
+  .route .arrow{color:var(--gold);margin:0 2px;font-size:13px;}
+
+  /* ---- Section shell ---- */
+  section{margin-top:56px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:22px;
+    border-bottom:1.5px solid var(--line);
+    padding-bottom:12px;
+  }
+  .section-head h2{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:26px;
+    color:var(--navy);
+    margin:0;
+  }
+  .section-head .count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  /* ---- Notes callout ---- */
+  .notes{
+    background:#EEF3EA;
+    border:1px solid #CFE0C8;
+    border-radius:var(--radius);
+    padding:20px 24px;
+    margin-top:36px;
+  }
+  .notes p{margin:0 0 8px;font-size:14.5px;color:#3A5A34;}
+  .notes p:last-child{margin-bottom:0;}
+  .notes strong{color:#2C4726;}
+
+  /* ---- Timeline (Trip Overview) ---- */
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{
+    content:"";
+    position:absolute;left:6px;top:6px;bottom:6px;
+    width:1.5px;background:var(--line);
+  }
+  .t-item{position:relative;padding:0 0 26px 22px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";
+    position:absolute;left:-2.5px;top:5px;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--gold);
+    border:2px solid var(--parchment);
+  }
+  .t-date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--teal);
+    font-weight:600;
+    letter-spacing:.02em;
+    margin-bottom:3px;
+  }
+  .t-what{font-size:15px;font-weight:500;color:var(--ink);}
+  .t-how{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+
+  /* ---- Ticket-style cards ---- */
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 22px;
+    margin-bottom:16px;
+    position:relative;
+    box-shadow:0 1px 2px rgba(27,42,68,0.04);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .card-title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:17.5px;
+    color:var(--ink);
+  }
+  .code-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.03em;
+    background:var(--navy);
+    color:#F4EFE3;
+    padding:4px 9px;
+    border-radius:5px;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .card-tag-date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    background:#EFE6D2;
+    color:var(--gold);
+    border:1px solid #DFCE9F;
+    padding:4px 9px;
+    border-radius:5px;
+    white-space:nowrap;
+  }
+  .card .line{font-size:14px;margin:4px 0;color:var(--ink);}
+  .card .line .lbl{color:var(--ink-soft);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;}
+  .card .foot{font-size:12.5px;color:var(--ink-soft);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);}
+
+  /* ---- Overview table (kept as compact table too) ---- */
+  footer{
+    text-align:center;
+    padding:36px 24px 0;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    font-style:italic;
+  }
+
+  @media (max-width:600px){
+    header{padding:48px 18px 36px;}
+    .wrap{padding:0 16px 60px;}
+    .card-top{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Travel Itinerary</p>
+  <h1>Natraj Family — Europe Trip</h1>
+  <p class="sub">August 4 – August 26, 2026 · Iceland · Norway · Estonia · Finland · Sweden</p>
+  <div class="route">
+    <span class="stop">PHX</span><span class="arrow">→</span>
+    <span class="stop">SEA</span><span class="arrow">→</span>
+    <span class="stop">KEF</span><span class="arrow">→</span>
+    <span class="stop">OSL</span><span class="arrow">→</span>
+    <span class="stop">BGO</span><span class="arrow">→</span>
+    <span class="stop">OSL</span><span class="arrow">→</span>
+    <span class="stop">TLL</span><span class="arrow">→</span>
+    <span class="stop">HEL</span><span class="arrow">→</span>
+    <span class="stop">ARN</span><span class="arrow">→</span>
+    <span class="stop">OSL</span><span class="arrow">→</span>
+    <span class="stop">SEA</span><span class="arrow">→</span>
+    <span class="stop">PHX</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="notes">
+    <p><strong>Updated and confirmed</strong></p>
+    <p>Southwest flight PHX ⇄ SEA has been rebooked under confirmation <strong>CE29GA</strong> (the earlier A9KJ8T booking was canceled).</p>
+    <p>The Lotus Car Rental (Iceland) dates are now corrected to <strong>August 5–8</strong>, matching the Iceland stay.</p>
+  </div>
+
+  <section id="overview">
+    <div class="section-head"><h2>Trip Overview</h2><span class="count">18 stops</span></div>
+    <div class="timeline">
+      <div class="t-item"><div class="t-date">AUG 4</div><div class="t-what">Phoenix (PHX) → Seattle (SEA)</div><div class="t-how">Southwest WN 2474</div></div>
+      <div class="t-item"><div class="t-date">AUG 4</div><div class="t-what">Depart Seattle (SEA) → Keflavík (KEF) overnight</div><div class="t-how">Icelandair FI684</div></div>
+      <div class="t-item"><div class="t-date">AUG 5–8</div><div class="t-what">Reykjavík / Kópavogur, Iceland</div><div class="t-how">Airbnb — Þinghólsbraut 37</div></div>
+      <div class="t-item"><div class="t-date">AUG 8</div><div class="t-what">Keflavík (KEF) → Oslo (OSL)</div><div class="t-how">Icelandair FI318</div></div>
+      <div class="t-item"><div class="t-date">AUG 8–11</div><div class="t-what">Oslo, Norway</div><div class="t-how">Airbnb — Stamhusveien 25C</div></div>
+      <div class="t-item"><div class="t-date">AUG 11</div><div class="t-what">"Norway in a Nutshell": Oslo → Myrdal → Flåm → Gudvangen → Voss → Bergen</div><div class="t-how">Train / Boat / Bus / Train</div></div>
+      <div class="t-item"><div class="t-date">AUG 11–13</div><div class="t-what">Bergen, Norway</div><div class="t-how">Airbnb — Vestre Vallavegen 7</div></div>
+      <div class="t-item"><div class="t-date">AUG 13</div><div class="t-what">Bergen → Oslo by train, then Oslo Airport hotel</div><div class="t-how">Vy Train / Park Inn</div></div>
+      <div class="t-item"><div class="t-date">AUG 14</div><div class="t-what">Oslo (OSL) → Tallinn (TLL)</div><div class="t-how">Norwegian Air Sweden 2010</div></div>
+      <div class="t-item"><div class="t-date">AUG 14–17</div><div class="t-what">Tallinn, Estonia</div><div class="t-how">Airbnb — Endla 64</div></div>
+      <div class="t-item"><div class="t-date">AUG 17</div><div class="t-what">Tallinn → Helsinki by ferry</div><div class="t-how">Viking Line</div></div>
+      <div class="t-item"><div class="t-date">AUG 17–19</div><div class="t-what">Helsinki, Finland</div><div class="t-how">Omena Hotel City Centre</div></div>
+      <div class="t-item"><div class="t-date">AUG 19–20</div><div class="t-what">Helsinki → Stockholm overnight ferry</div><div class="t-how">Viking Line (Gabriella)</div></div>
+      <div class="t-item"><div class="t-date">AUG 20–24</div><div class="t-what">Stockholm, Sweden</div><div class="t-how">Airbnb — Ormängsgatan 69A</div></div>
+      <div class="t-item"><div class="t-date">AUG 24</div><div class="t-what">Stockholm → Oslo by bus</div><div class="t-how">Vy Bus4You 850</div></div>
+      <div class="t-item"><div class="t-date">AUG 24–25</div><div class="t-what">Oslo Airport hotel</div><div class="t-how">Park Inn by Radisson</div></div>
+      <div class="t-item"><div class="t-date">AUG 25</div><div class="t-what">Oslo (OSL) → Keflavík (KEF) → Seattle (SEA)</div><div class="t-how">Icelandair FI319 / FI683</div></div>
+      <div class="t-item"><div class="t-date">AUG 26</div><div class="t-what">Seattle (SEA) → Phoenix (PHX)</div><div class="t-how">Southwest WN 0269</div></div>
+    </div>
+  </section>
+
+  <section id="flights">
+    <div class="section-head"><h2>Flights</h2><span class="count">3 bookings</span></div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Icelandair — Seattle → Keflavík → Oslo</span><span class="code-tag">CT2BOO</span></div>
+      <div class="line"><span class="lbl">Passengers</span>Balasubramania Natraj (seat 08C), Meera Natraj (seat 08D)</div>
+      <div class="line">Aug 4: SEA 23:25 → KEF 14:00 (+1 day), flight FI684, 7h35m</div>
+      <div class="line">Aug 8: KEF 07:50 → OSL 12:35, flight FI318, 2h45m</div>
+      <div class="line"><span class="lbl">Return</span>Aug 25: OSL 13:50 → KEF 14:45 (FI319); 5-hr connection; KEF 19:45 → SEA 20:40 (FI683)</div>
+      <div class="foot">3-night Iceland stopover included · 1 checked bag per passenger · fare: Economy Flex</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Norwegian Air Sweden — Oslo → Tallinn</span><span class="code-tag">ACD78H</span></div>
+      <div class="line"><span class="lbl">Passengers</span>Balasubramania Natraj, Meera Natraj, Usha Ramachandran (seats 10A/10B/10C)</div>
+      <div class="line">Fri, Aug 14: OSL (Gardermoen) 09:05 → TLL (Lennart Meri) 11:35, flight NAX 2010, 1h30m</div>
+      <div class="foot">Expedia itinerary 73465167743221</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Southwest — Phoenix ⇄ Seattle</span><span class="code-tag">CE29GA</span></div>
+      <div class="line"><span class="lbl">Passengers</span>Meera Natraj, Balasubramania Natraj, Usha Ramachandran</div>
+      <div class="line">Tue, Aug 4: PHX 09:00 → SEA 12:05, flight WN 2474, 3h5m</div>
+      <div class="line">Wed, Aug 26: SEA 11:40 → PHX 14:50, flight WN 0269, 3h10m</div>
+      <div class="foot">Seats assigned at check-in</div>
+    </div>
+  </section>
+
+  <section id="transit">
+    <div class="section-head"><h2>Trains, Ferries &amp; Bus</h2><span class="count">5 bookings</span></div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">"Norway in a Nutshell" — Oslo to Bergen</span><span class="code-tag">Fjordtours</span></div>
+      <div class="line">Tue, Aug 11: Train Oslo → Myrdal, 09:18–14:20 (F4 Bergen Railway, Vy) — Car 3, Seats 103/104/105</div>
+      <div class="line">Tue, Aug 11: Train Myrdal → Flåm, 14:41–15:39 (R45 Flåm Railway) — free seating</div>
+      <div class="line">Tue, Aug 11: Boat Flåm → Gudvangen, 17:30–19:20 (Nærøyfjord Cruise) — free seating</div>
+      <div class="line">Tue, Aug 11: Bus Gudvangen → Voss, 19:30–20:30</div>
+      <div class="line">Tue, Aug 11: Train Voss → Bergen, 21:07–22:30 (R40 Voss Railway, Vy) — Car 1, Seats 16/17/18</div>
+      <div class="foot">Main traveler: Balasubramania Natraj, party of 3</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Vy Train — Bergen to Oslo</span><span class="code-tag">FYA-F3D-PLN</span></div>
+      <div class="line">Thu, Aug 13: Bergen stasjon 08:08 → Oslo S 15:05, train F4, Car 7 (Seats 5, 10, 13 — 2 adult, 1 senior)</div>
+      <div class="foot">Order ID: CB975VVL</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Viking Line Ferry — Tallinn to Helsinki</span><span class="code-tag">DFP197067405</span></div>
+      <div class="line">Mon, Aug 17: Tallinn 07:00 → Helsinki 09:30 (2h30m), vessel operated by Viking Line</div>
+      <div class="line"><span class="lbl">Passengers</span>Balasubramania Natraj, Meera Natraj, Usha Ramachandran</div>
+      <div class="foot">Includes cancel for any reason up to 48 hrs before departure</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Viking Line Ferry — Helsinki to Stockholm (overnight)</span><span class="code-tag">B29SPU7PQS5</span></div>
+      <div class="line">Wed, Aug 19: Helsinki 17:00 → Thu, Aug 20 Stockholm 10:10 (18h10m), vessel Gabriella</div>
+      <div class="line"><span class="lbl">Passengers</span>Balasubramania Natraj, Meera Natraj, Usha Ramachandran — 4-berth cabins, Standard Class</div>
+      <div class="foot">Departs from Viking Line, Mastokatu 1, 00160 Helsinki · boarding closes 30 min before departure</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Omio Bus — Stockholm to Oslo</span><span class="code-tag">260604362418</span></div>
+      <div class="line">Mon, Aug 24: Stockholm Terminalslingen 07:40 → Oslo Schweigaards gate 15:25 (7h45m), Vy Bus4You 850</div>
+      <div class="line"><span class="lbl">Passengers</span>Balasubramania Natraj, Meera Natraj, Usha Ramachandran (senior fares)</div>
+    </div>
+  </section>
+
+  <section id="lodging">
+    <div class="section-head"><h2>Lodging</h2><span class="count">7 stays</span></div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Airbnb — Kópavogur (Reykjavík area), Iceland</span><span class="card-tag-date">Aug 5–8</span></div>
+      <div class="line"><span class="lbl">Address</span>Þinghólsbraut 37, 200 Kópavogur, Iceland</div>
+      <div class="line"><span class="lbl">Host</span>Hrafnhildur — +354 823 8278</div>
+      <div class="foot">Check-in after 3:00 PM · Checkout by 11:00 AM · 3 adults</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Airbnb — Oslo (Ekeberg), Norway</span><span class="card-tag-date">Aug 8–11</span></div>
+      <div class="line"><span class="lbl">Address</span>Stamhusveien 25C, 1181 Oslo, Norway</div>
+      <div class="line"><span class="lbl">Host</span>Anna — +47 97 51 36 33</div>
+      <div class="foot">Check-in after 2:00 PM · Checkout by 12:00 PM · 3 adults</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Airbnb — "The Little Troll's Lair", Bergen</span><span class="card-tag-date">Aug 11–13</span></div>
+      <div class="line"><span class="lbl">Address</span>Vestre Vallavegen 7, 5227 Nesttun, Norway</div>
+      <div class="line"><span class="lbl">Host</span>Daniel Florian — +47 40 49 71 56</div>
+      <div class="foot">Check-in after 3:00 PM · Checkout by 11:00 AM · Self check-in with lockbox · 3 adults</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Park Inn by Radisson Oslo Airport Hotel West</span><span class="card-tag-date">Aug 13–14</span></div>
+      <div class="line"><span class="lbl">Address</span>Museumsvegen 26, 2060 Gardermoen, Norway — +47 63 94 95 00</div>
+      <div class="line"><span class="lbl">Confirmation / PIN</span>6576195709 / 4490</div>
+      <div class="foot">1 night, Family Room, 3 adults, breakfast included · free cancellation until 6:00 PM day of arrival</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Airbnb — Tallinn, Estonia</span><span class="card-tag-date">Aug 14–17</span></div>
+      <div class="line"><span class="lbl">Address</span>Endla 64, 10613 Tallinn, Estonia</div>
+      <div class="line"><span class="lbl">Host</span>Eivin</div>
+      <div class="foot">Check-in after 3:00 PM · Checkout by 11:00 AM · Self check-in with lockbox · 3 adults</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Omena Hotel Helsinki City Centre</span><span class="card-tag-date">Aug 17–19</span></div>
+      <div class="line"><span class="lbl">Confirmation</span>5024689984</div>
+      <div class="foot">No 24/7 reception; no on-site luggage storage — use Helsinki railway station or Kamppi shopping centre lockers if needed before/after your stay</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Airbnb — Stockholm (Hässelby), Sweden</span><span class="card-tag-date">Aug 20–24</span></div>
+      <div class="line"><span class="lbl">Address</span>Ormängsgatan 69A, 165 56 Hässelby, Sweden</div>
+      <div class="line"><span class="lbl">Host</span>Magalys — +46 72 902 69 33</div>
+      <div class="line"><span class="lbl">Confirmation</span>HMAYCECDHC</div>
+      <div class="foot">Check-in after 3:00 PM · Checkout by 11:00 AM · 3 adults</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="card-title">Park Inn by Radisson Oslo Airport Hotel West</span><span class="card-tag-date">Aug 24–25</span></div>
+      <div class="line"><span class="lbl">Address</span>Museumsvegen 26, 2060 Gardermoen, Norway — +47 63 94 95 00</div>
+      <div class="line"><span class="lbl">Confirmation / PIN</span>5062826289 / 0411</div>
+      <div class="foot">1 night, Family Room, 3 adults, breakfast included · free cancellation until 6:00 PM day of arrival</div>
+    </div>
+  </section>
+
+  <section id="car">
+    <div class="section-head"><h2>Car Rental</h2><span class="count">1 booking</span></div>
+    <div class="card">
+      <div class="card-top"><span class="card-title">Lotus Car Rental — Keflavík, Iceland</span><span class="code-tag">1T6I2K</span></div>
+      <div class="line"><span class="lbl">Dates</span>Pickup Aug 5, 2026, 15:00 → Drop-off Aug 8, 2026, 04:30, Keflavík International Airport</div>
+      <div class="line"><span class="lbl">Vehicle</span>Suzuki Vitara 4x4 (automatic)</div>
+      <div class="line"><span class="lbl">Total</span>72,220 ISK (incl. Road Tax, Silver + Platinum Insurance, Roadside Assistance)</div>
+      <div class="foot">Bring: passport/ID, driving license, valid credit or debit card</div>
+    </div>
+  </section>
+
+  <footer>Compiled from confirmation emails.</footer>
+</div>
+
+</body>
+</html>
