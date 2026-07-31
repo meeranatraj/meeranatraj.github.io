@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Points of Interest — Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1826;
+    --card:#122236;
+    --card-hover:#16283F;
+    --line:#25405C;
+    --text:#E7EEF4;
+    --text-dim:#9FB3C8;
+    --text-faint:#5D7998;
+    --aurora:#5EEAD4;
+    --aurora-dim:rgba(94,234,212,0.18);
+    --gold:#E8B75C;
+    --gold-dim:rgba(232,183,92,0.15);
+    --violet:#8B93F0;
+  }
+  *{box-sizing:border-box;}
+  html{overflow-x:hidden;}
+  body{
+    margin:0;
+    max-width:100vw;
+    overflow-x:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(94,234,212,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 10%, rgba(139,147,240,0.08), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px 100px;}
+  h1,h2,h3,p,a,span{overflow-wrap:break-word; word-break:break-word;}
+
+  .hero{padding:64px 24px 20px; text-align:center;}
+  .hero-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    color:var(--aurora);
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(28px,6vw,50px);
+    line-height:1.15;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  .hero p{color:var(--text-dim); font-size:15px; max-width:520px; margin:0 auto;}
+
+  .route-strip{
+    display:flex; justify-content:center; flex-wrap:wrap; gap:6px;
+    margin:28px 0 0;
+    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-faint);
+  }
+  .route-strip span.stop{color:var(--text-dim);}
+  .route-strip span.arrow{color:var(--aurora);}
+
+  .list{margin-top:48px; display:flex; flex-direction:column; gap:18px;}
+
+  .stop-card{
+    position:relative;
+    display:block;
+    text-decoration:none;
+    color:var(--text);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 24px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .stop-card:hover{border-color:var(--aurora); background:var(--card-hover);}
+
+  .stop-card-top{
+    display:flex; align-items:center; gap:14px; margin-bottom:10px;
+  }
+  .stop-num{
+    font-family:'Fraunces',serif; font-weight:500; font-size:15px;
+    color:var(--bg); background:var(--aurora);
+    width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .stop-card h2{
+    font-family:'Fraunces',serif; font-weight:500; font-size:24px; margin:0;
+  }
+  .stop-dates{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--text-faint);
+    margin-left:50px; margin-bottom:12px;
+  }
+  .stop-desc{
+    font-size:13.8px; color:var(--text-dim); margin:0 0 14px; margin-left:50px;
+  }
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-left:50px;}
+  .badge{
+    font-family:'JetBrains Mono',monospace; font-size:10.5px;
+    background:var(--gold-dim); color:var(--gold);
+    border:1px solid rgba(232,183,92,0.32); border-radius:7px;
+    padding:4px 9px; display:inline-block;
+  }
+  .go-arrow{
+    position:absolute; right:22px; top:50%; transform:translateY(-50%);
+    color:var(--aurora); font-family:'JetBrains Mono',monospace; font-size:18px;
+  }
+
+  footer{
+    text-align:center; padding:56px 24px 10px; color:var(--text-faint);
+    font-family:'JetBrains Mono',monospace; font-size:11px;
+    letter-spacing:0.08em; text-transform:uppercase;
+  }
+
+  @media (max-width:600px){
+    .hero{padding:44px 16px 12px;}
+    .hero h1{font-size:clamp(22px,7vw,32px);}
+    .hero p{font-size:13.5px;}
+    .stop-card{padding:18px 18px 18px 18px;}
+    .stop-num{width:30px; height:30px; font-size:13px;}
+    .stop-card h2{font-size:20px;}
+    .stop-dates, .stop-desc, .tag-row{margin-left:44px;}
+    .go-arrow{right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Points of Interest · Aug 5 – 24, 2026</div>
+  <h1>Trip Guide Index</h1>
+  <p>Five cities, five guides — tap a destination to open its points of interest, day by day.</p>
+  <div class="route-strip">
+    <span class="stop">Iceland</span><span class="arrow">→</span>
+    <span class="stop">Norway</span><span class="arrow">→</span>
+    <span class="stop">Tallinn</span><span class="arrow">→</span>
+    <span class="stop">Helsinki</span><span class="arrow">→</span>
+    <span class="stop">Stockholm</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="list">
+
+    <a class="stop-card" href="Iceland_Points_of_Interest.html">
+      <div class="stop-card-top">
+        <div class="stop-num">1</div>
+        <h2>Iceland</h2>
+      </div>
+      <div class="stop-dates">Aug 5 – 7</div>
+      <p class="stop-desc">A walkable Reykjavík afternoon, then the Golden Circle and South Coast driving loops — with route maps and drive times for every stop.</p>
+      <div class="tag-row">
+        <span class="badge">Reykjavík</span>
+        <span class="badge">Golden Circle</span>
+        <span class="badge">South Coast</span>
+      </div>
+      <span class="go-arrow">→</span>
+    </a>
+
+    <a class="stop-card" href="Norway_Points_of_Interest.html">
+      <div class="stop-card-top">
+        <div class="stop-num">2</div>
+        <h2>Norway</h2>
+      </div>
+      <div class="stop-dates">Aug 8 – 12</div>
+      <p class="stop-desc">Four days in Oslo followed by the Norway in a Nutshell train to Bergen, with a self-guided walking route around the Nordnes Peninsula.</p>
+      <div class="tag-row">
+        <span class="badge">Oslo</span>
+        <span class="badge">Bergen</span>
+      </div>
+      <span class="go-arrow">→</span>
+    </a>
+
+    <a class="stop-card" href="Tallinn_Points_of_Interest.html">
+      <div class="stop-card-top">
+        <div class="stop-num">3</div>
+        <h2>Tallinn</h2>
+      </div>
+      <div class="stop-dates">Aug 14 – 16</div>
+      <p class="stop-desc">A half-day through the Lower Old Town, a full day on Toompea Hill and the creative districts, and a final day of bog trails and coastal parks.</p>
+      <div class="tag-row">
+        <span class="badge">Old Town</span>
+        <span class="badge">Toompea</span>
+        <span class="badge">Viru Bog</span>
+      </div>
+      <span class="go-arrow">→</span>
+    </a>
+
+    <a class="stop-card" href="Helsinki_Points_of_Interest.html">
+      <div class="stop-card-top">
+        <div class="stop-num">4</div>
+        <h2>Helsinki</h2>
+      </div>
+      <div class="stop-dates">Aug 17 – 19</div>
+      <p class="stop-desc">Senate Square and the historic core, the Suomenlinna sea fortress and Töölö's architecture, then a day trip out to Porvoo.</p>
+      <div class="tag-row">
+        <span class="badge">Suomenlinna</span>
+        <span class="badge">Porvoo</span>
+      </div>
+      <span class="go-arrow">→</span>
+    </a>
+
+    <a class="stop-card" href="Stockholm_Points_of_Interest.html">
+      <div class="stop-card-top">
+        <div class="stop-num">5</div>
+        <h2>Stockholm</h2>
+      </div>
+      <div class="stop-dates">Aug 20 – 24</div>
+      <p class="stop-desc">City Hall and Gamla Stan, the Djurgården museum island, and two boat trips out onto the water — including a Viking-age day trip to Birka.</p>
+      <div class="tag-row">
+        <span class="badge">Gamla Stan</span>
+        <span class="badge">Vasa &amp; Skansen</span>
+        <span class="badge">Birka</span>
+      </div>
+      <span class="go-arrow">→</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>Trip Guide Index · Aug 5–24, 2026</footer>
+
+</body>
+</html>
